@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { register } from '../../api/auth.js';
+import { Logo } from '../../components/Brand.jsx';
+import AuthHeader from './AuthHeader.jsx';
 
 export default function Register() {
   const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' });
@@ -42,21 +44,32 @@ export default function Register() {
   );
 
   return (
-    <div className="auth-page">
-      <h1>Create an account</h1>
-      <form className="card" onSubmit={handleSubmit} noValidate>
-        {message && <div className={`alert alert-${message.type}`}>{message.text}</div>}
-        {field('name', 'Full name')}
-        {field('email', 'Institutional email', 'email')}
-        {field('password', 'Password', 'password')}
-        {field('confirm', 'Confirm password', 'password')}
-        <div className="row">
-          <button className="btn btn-primary" type="submit">
-            Register
-          </button>
-          <Link to="/login">Back to sign in</Link>
-        </div>
-      </form>
+    <div className="auth-shell">
+      <AuthHeader />
+
+      <main className="auth-page">
+        <form className="auth-card" onSubmit={handleSubmit} noValidate>
+          <div className="auth-card-head">
+            <Logo />
+            <h1>Create an Account</h1>
+            <p className="muted">Register with your institute email. An administrator activates new accounts.</p>
+          </div>
+
+          <div className="auth-card-body">
+            {message && <div className={`alert alert-${message.type}`}>{message.text}</div>}
+            {field('name', 'Full name')}
+            {field('email', 'Institute email', 'email')}
+            {field('password', 'Password', 'password')}
+            {field('confirm', 'Confirm password', 'password')}
+            <button className="btn btn-primary btn-block btn-large" type="submit">
+              Register
+            </button>
+            <div className="auth-links">
+              <Link to="/login">← Back to sign in</Link>
+            </div>
+          </div>
+        </form>
+      </main>
     </div>
   );
 }

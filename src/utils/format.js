@@ -20,6 +20,19 @@ export function fromInputValue(value) {
   return value ? new Date(value).toISOString() : '';
 }
 
+// Odd semester runs July–December, even semester January–June.
+export function academicSession(date = new Date()) {
+  const y = date.getFullYear();
+  const odd = date.getMonth() >= 6;
+  const start = odd ? y : y - 1;
+  return { year: `${start}-${String(start + 1).slice(2)}`, semester: odd ? 'Odd' : 'Even' };
+}
+
+export function greeting(date = new Date()) {
+  const h = date.getHours();
+  return h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
+}
+
 export function formatPct(value) {
   return value == null ? 'N/A' : `${value.toFixed(2)}%`;
 }
