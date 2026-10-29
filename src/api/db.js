@@ -1,6 +1,6 @@
 import { createSeed } from './seed.js';
 
-// Mock backend: all data lives in localStorage so the UI works without a server.
+// Mock backend: all data is kept in the Local Storage so the UI works without a server.
 // Replace the functions in src/api/*.js with real HTTP calls when the backend is ready.
 const STORAGE_KEY = 'fas-db-v1';
 export const SESSION_KEY = 'fas-session';
