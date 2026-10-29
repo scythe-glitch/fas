@@ -52,7 +52,7 @@ src/
 
 New feature folders are picked up automatically; `App.jsx` does not need to change.
 
-### Connecting the real backend
+### connecting the real backend
 
 Pages only call functions from `src/api/*.js`. Every function is `async`, so swapping the
 localStorage implementation for `fetch` calls to the backend does not require page changes.
